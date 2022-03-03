@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="STOKTAKIPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Hesaplar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HesapAdi" Type="nvarchar(max)" />
+          <Property Name="HesapTuru" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar(max)" />
+          <Property Name="Adres" Type="nvarchar(max)" />
+          <Property Name="InsertDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Islemler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="Islem" Type="int" />
+          <Property Name="HesapId" Type="int" />
+          <Property Name="UrunId" Type="int" />
+          <Property Name="Adet" Type="int" />
+          <Property Name="SatisFiyat" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Kdv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="VergisizFiyat" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Tutar" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="150" />
+          <Property Name="InsertDate" Type="datetime" />
+          <Property Name="LastModify" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Stoklar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="Adi" Type="nvarchar" MaxLength="150" />
+          <Property Name="KategoriId" Type="int" />
+          <Property Name="MarkaId" Type="int" />
+          <Property Name="Ozellik" Type="nvarchar(max)" />
+          <Property Name="Adet" Type="int" />
+          <Property Name="Alis" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Satis" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LastModify" Type="datetime" />
+          <Property Name="InsertDate" Type="datetime" />
+          <Property Name="Barkod" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Islem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Islem" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Kategoriler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="InsertDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Markalar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adi" Type="nvarchar(max)" />
+          <Property Name="InsertDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="STOKTAKIPModelStoreContainer">
+          <EntitySet Name="Hesaplar" EntityType="Self.Hesaplar" Schema="Cari" store:Type="Tables" />
+          <EntitySet Name="Islemler" EntityType="Self.Islemler" Schema="Cari" store:Type="Tables" />
+          <EntitySet Name="Stoklar" EntityType="Self.Stoklar" Schema="Cari" store:Type="Tables" />
+          <EntitySet Name="Islem" EntityType="Self.Islem" Schema="Sistem" store:Type="Tables" />
+          <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="Sistem" store:Type="Tables" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="Sistem" store:Type="Tables" />
+          <EntitySet Name="Markalar" EntityType="Self.Markalar" Schema="Sistem" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="STOKTAKIPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Hesaplar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HesapAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HesapTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Stoklar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="KategoriId" Type="Int32" />
+          <Property Name="MarkaId" Type="Int32" />
+          <Property Name="Ozellik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adet" Type="Int32" />
+          <Property Name="Alis" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Satis" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LastModify" Type="DateTime" Precision="3" />
+          <Property Name="InsertDate" Type="DateTime" Precision="3" />
+          <Property Name="Barkod" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Kategoriler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Markalar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Adi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="STOKTAKIPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Hesaplar" EntityType="Self.Hesaplar" />
+          <EntitySet Name="Stoklar" EntityType="Self.Stoklar" />
+          <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" />
+          <EntitySet Name="Markalar" EntityType="Self.Markalar" />
+          <EntitySet Name="Islem" EntityType="STOKTAKIPModel.Islem" />
+          <EntitySet Name="Kullanicilar" EntityType="STOKTAKIPModel.Kullanicilar" />
+          <EntitySet Name="Islemler" EntityType="STOKTAKIPModel.Islemler" />
+        </EntityContainer>
+        <EntityType Name="Islem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Islem1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Islemler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="Islem" Type="Int32" />
+          <Property Name="HesapId" Type="Int32" />
+          <Property Name="UrunId" Type="Int32" />
+          <Property Name="Adet" Type="Int32" />
+          <Property Name="SatisFiyat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Kdv" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="VergisizFiyat" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Tutar" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Aciklama" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="InsertDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModify" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="STOKTAKIPModelStoreContainer" CdmEntityContainer="STOKTAKIPEntities">
+          <EntitySetMapping Name="Hesaplar">
+            <EntityTypeMapping TypeName="STOKTAKIPModel.Hesaplar">
+              <MappingFragment StoreEntitySet="Hesaplar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HesapAdi" ColumnName="HesapAdi" />
+                <ScalarProperty Name="HesapTuru" ColumnName="HesapTuru" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stoklar">
+            <EntityTypeMapping TypeName="STOKTAKIPModel.Stoklar">
+              <MappingFragment StoreEntitySet="Stoklar">
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="MarkaId" ColumnName="MarkaId" />
+                <ScalarProperty Name="Ozellik" ColumnName="Ozellik" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="Alis" ColumnName="Alis" />
+                <ScalarProperty Name="Satis" ColumnName="Satis" />
+                <ScalarProperty Name="LastModify" ColumnName="LastModify" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Barkod" ColumnName="Barkod" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategoriler">
+            <EntityTypeMapping TypeName="STOKTAKIPModel.Kategoriler">
+              <MappingFragment StoreEntitySet="Kategoriler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Markalar">
+            <EntityTypeMapping TypeName="STOKTAKIPModel.Markalar">
+              <MappingFragment StoreEntitySet="Markalar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Islem">
+            <EntityTypeMapping TypeName="STOKTAKIPModel.Islem">
+              <MappingFragment StoreEntitySet="Islem">
+                <ScalarProperty Name="Islem1" ColumnName="Islem" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="STOKTAKIPModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Islemler">
+            <EntityTypeMapping TypeName="STOKTAKIPModel.Islemler">
+              <MappingFragment StoreEntitySet="Islemler">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="LastModify" ColumnName="LastModify" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+                <ScalarProperty Name="VergisizFiyat" ColumnName="VergisizFiyat" />
+                <ScalarProperty Name="Kdv" ColumnName="Kdv" />
+                <ScalarProperty Name="SatisFiyat" ColumnName="SatisFiyat" />
+                <ScalarProperty Name="Adet" ColumnName="Adet" />
+                <ScalarProperty Name="UrunId" ColumnName="UrunId" />
+                <ScalarProperty Name="HesapId" ColumnName="HesapId" />
+                <ScalarProperty Name="Islem" ColumnName="Islem" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
